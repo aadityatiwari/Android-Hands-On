@@ -1,0 +1,10 @@
+<resources>
+
+    <string name="app_name">My Android Tutorial Project</string>
+    <string name="hello">Hello, Welcome to My Android Tutorial Project</string>
+    <string name="ref">This is a reference string</string>
+    <string name="total">Your total is: </string>
+    <string name="add">Add one</string>
+    <string name="subtract">Subtract one</string>
+
+</resources>
