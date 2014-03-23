@@ -6,5 +6,8 @@
     <string name="total">Your total is: </string>
     <string name="add">Add one</string>
     <string name="subtract">Subtract one</string>
+    <string name="editTextHint">Type a Command</string>
+    <string name="tryCommand">Try Command</string>
+    <string name="invalidString">invalid</string>
 
 </resources>
