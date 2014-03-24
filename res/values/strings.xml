@@ -9,5 +9,7 @@
     <string name="editTextHint">Type a Command</string>
     <string name="tryCommand">Try Command</string>
     <string name="invalidString">invalid</string>
+    <string name="sendEmail">Send Email</string>
+    
 
 </resources>
