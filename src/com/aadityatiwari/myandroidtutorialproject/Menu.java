@@ -10,7 +10,7 @@ import android.widget.ListView;
 public class Menu extends ListActivity {
 
 	String[] classes = { "StartingPoint", "Splash", "Menu", "TextPlay",
-			"Email" };
+			"Email", "Camera", "RelativeLayoutGetData" };
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,6 @@ public class Menu extends ListActivity {
 			Intent ourIntent = new Intent(Menu.this, ourClass);
 			startActivity(ourIntent);
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

@@ -7,6 +7,8 @@
         android:minSdkVersion="8"
         android:targetSdkVersion="18" />
 
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -28,6 +30,7 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -38,6 +41,7 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="com.aadityatiwari.myandroidtutorialproject.MENU" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -48,10 +52,19 @@
         <activity
             android:name=".Email"
             android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="com.aadityatiwari.myandroidtutorialproject.EMAIL" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Camera"
+            android:label="@string/cameraApp"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".RelativeLayoutGetData"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".LinearLayoutSendData"
+            android:label="@string/app_name" >
         </activity>
     </application>
 
