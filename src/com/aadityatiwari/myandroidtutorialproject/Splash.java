@@ -2,18 +2,28 @@ package com.aadityatiwari.myandroidtutorialproject;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 
 public class Splash extends Activity {
 	MediaPlayer testSong;
+
 	@Override
-	protected void onCreate(Bundle AadityaLovesBacon) {
+	protected void onCreate(Bundle bundle) {
 		// TODO Auto-generated method stub
-		super.onCreate(AadityaLovesBacon);
+		super.onCreate(bundle);
 		setContentView(R.layout.splash);
 		testSong = MediaPlayer.create(Splash.this, R.raw.winged);
-		testSong.start();
+
+		SharedPreferences getPrefs = PreferenceManager
+				.getDefaultSharedPreferences(getBaseContext());
+		boolean music = getPrefs.getBoolean("musicCheckbox", true);
+		if (music) {
+			testSong.start();
+		}
+
 		Thread timer = new Thread() {
 			public void run() {
 				try {
@@ -21,8 +31,9 @@ public class Splash extends Activity {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				} finally {
-					//String intentName = "com.aadityatiwari.myandroidtutorialproject.STARTINGPOINT";
-					String intentName = "com.aadityatiwari.myandroidtutorialproject.MENU";
+					// String intentName =
+					// "com.aadityatiwari.myandroidtutorialproject.STARTINGPOINT";
+					String intentName = "com.aadityatiwari.myandroidtutorialproject.MYMENU";
 					Intent openStartingPointIntent = new Intent(intentName);
 					startActivity(openStartingPointIntent);
 				}

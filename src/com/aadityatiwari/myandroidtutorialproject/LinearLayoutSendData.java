@@ -2,7 +2,9 @@ package com.aadityatiwari.myandroidtutorialproject;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -27,11 +29,23 @@ public class LinearLayoutSendData extends Activity implements OnClickListener,
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.linearlayoutsenddata);
 		initialize();
-		Bundle bundleReceivedFromRelativeLayoutGetDataActivity = getIntent()
-				.getExtras();
-		etSendDataValueFromRelativeLayoutGetDataClass = bundleReceivedFromRelativeLayoutGetDataActivity
-				.getString("etSendDataValueFromRelativeLayoutGetDataClass");
-		tvQuestion.setText(etSendDataValueFromRelativeLayoutGetDataClass);
+
+		SharedPreferences getData = PreferenceManager
+				.getDefaultSharedPreferences(getBaseContext());
+		String et = getData.getString("name", "Aaditya is ...");
+		String values = getData.getString("list", "4");
+
+		if (values.contentEquals("1")) {
+			tvQuestion.setText(et);
+		}
+
+		/*
+		 * Bundle bundleReceivedFromRelativeLayoutGetDataActivity = getIntent()
+		 * .getExtras(); etSendDataValueFromRelativeLayoutGetDataClass =
+		 * bundleReceivedFromRelativeLayoutGetDataActivity
+		 * .getString("etSendDataValueFromRelativeLayoutGetDataClass");
+		 * tvQuestion.setText(etSendDataValueFromRelativeLayoutGetDataClass);
+		 */
 	}
 
 	private void initialize() {

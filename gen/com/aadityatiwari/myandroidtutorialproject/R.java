@@ -8,6 +8,10 @@
 package com.aadityatiwari.myandroidtutorialproject;
 
 public final class R {
+    public static final class array {
+        public static final int lValues=0x7f060001;
+        public static final int list=0x7f060000;
+    }
     public static final class attr {
     }
     public static final class drawable {
@@ -16,69 +20,73 @@ public final class R {
         public static final int octocat=0x7f020002;
     }
     public static final class id {
-        public static final int Things=0x7f080006;
-        public static final int analogClock1=0x7f08000d;
-        public static final int bAdd=0x7f080016;
-        public static final int bResults=0x7f080020;
-        public static final int bReturnData=0x7f080013;
-        public static final int bSA=0x7f08001c;
-        public static final int bSAFR=0x7f08001d;
-        public static final int bSendEmail=0x7f08000c;
-        public static final int bSetWallPaper=0x7f08001a;
-        public static final int bSubtract=0x7f080017;
-        public static final int etActions=0x7f080009;
-        public static final int etCommands=0x7f08001f;
-        public static final int etEmails=0x7f080001;
-        public static final int etIntro=0x7f080003;
-        public static final int etName=0x7f080005;
-        public static final int etOutro=0x7f08000b;
-        public static final int etSendData=0x7f08001b;
-        public static final int etThings=0x7f080007;
-        public static final int ibTakePic=0x7f080019;
-        public static final int ivReturnedPic=0x7f080018;
-        public static final int rA=0x7f080010;
-        public static final int rB=0x7f080011;
-        public static final int rC=0x7f080012;
-        public static final int rgOptions=0x7f08000f;
-        public static final int tbPassword=0x7f080021;
-        public static final int textView1=0x7f080000;
-        public static final int textView2=0x7f080002;
-        public static final int textView3=0x7f080004;
-        public static final int textView5=0x7f080008;
-        public static final int textView6=0x7f08000a;
-        public static final int tvGetText=0x7f08001e;
-        public static final int tvQuestion=0x7f08000e;
-        public static final int tvResults=0x7f080022;
-        public static final int tvSendText=0x7f080014;
-        public static final int tvTotalValueDisplay=0x7f080015;
+        public static final int Things=0x7f0a0006;
+        public static final int aboutUs=0x7f0a0023;
+        public static final int analogClock1=0x7f0a000d;
+        public static final int bAdd=0x7f0a0016;
+        public static final int bResults=0x7f0a0020;
+        public static final int bReturnData=0x7f0a0013;
+        public static final int bSA=0x7f0a001c;
+        public static final int bSAFR=0x7f0a001d;
+        public static final int bSendEmail=0x7f0a000c;
+        public static final int bSetWallPaper=0x7f0a001a;
+        public static final int bSubtract=0x7f0a0017;
+        public static final int etActions=0x7f0a0009;
+        public static final int etCommands=0x7f0a001f;
+        public static final int etEmails=0x7f0a0001;
+        public static final int etIntro=0x7f0a0003;
+        public static final int etName=0x7f0a0005;
+        public static final int etOutro=0x7f0a000b;
+        public static final int etSendData=0x7f0a001b;
+        public static final int etThings=0x7f0a0007;
+        public static final int exit=0x7f0a0025;
+        public static final int ibTakePic=0x7f0a0019;
+        public static final int ivReturnedPic=0x7f0a0018;
+        public static final int preferences=0x7f0a0024;
+        public static final int rA=0x7f0a0010;
+        public static final int rB=0x7f0a0011;
+        public static final int rC=0x7f0a0012;
+        public static final int rgOptions=0x7f0a000f;
+        public static final int tbPassword=0x7f0a0021;
+        public static final int textView1=0x7f0a0000;
+        public static final int textView2=0x7f0a0002;
+        public static final int textView3=0x7f0a0004;
+        public static final int textView5=0x7f0a0008;
+        public static final int textView6=0x7f0a000a;
+        public static final int tvGetText=0x7f0a001e;
+        public static final int tvQuestion=0x7f0a000e;
+        public static final int tvResults=0x7f0a0022;
+        public static final int tvSendText=0x7f0a0014;
+        public static final int tvTotalValueDisplay=0x7f0a0015;
     }
     public static final class layout {
-        public static final int email=0x7f030000;
-        public static final int linearlayoutsenddata=0x7f030001;
-        public static final int main=0x7f030002;
-        public static final int photo=0x7f030003;
-        public static final int relativelayoutgetdata=0x7f030004;
-        public static final int splash=0x7f030005;
-        public static final int text=0x7f030006;
+        public static final int about=0x7f030000;
+        public static final int email=0x7f030001;
+        public static final int linearlayoutsenddata=0x7f030002;
+        public static final int main=0x7f030003;
+        public static final int photo=0x7f030004;
+        public static final int relativelayoutgetdata=0x7f030005;
+        public static final int splash=0x7f030006;
+        public static final int text=0x7f030007;
     }
     public static final class menu {
-        public static final int test_menu=0x7f070000;
+        public static final int test_menu=0x7f090000;
     }
     public static final class raw {
-        public static final int winged=0x7f040000;
+        public static final int winged=0x7f050000;
     }
     public static final class string {
-        public static final int add=0x7f050005;
-        public static final int app_name=0x7f050000;
-        public static final int cameraApp=0x7f050001;
-        public static final int editTextHint=0x7f050007;
-        public static final int hello=0x7f050002;
-        public static final int invalidString=0x7f050009;
-        public static final int ref=0x7f050003;
-        public static final int sendEmail=0x7f05000a;
-        public static final int subtract=0x7f050006;
-        public static final int total=0x7f050004;
-        public static final int tryCommand=0x7f050008;
+        public static final int add=0x7f070005;
+        public static final int app_name=0x7f070000;
+        public static final int cameraApp=0x7f070001;
+        public static final int editTextHint=0x7f070007;
+        public static final int hello=0x7f070002;
+        public static final int invalidString=0x7f070009;
+        public static final int ref=0x7f070003;
+        public static final int sendEmail=0x7f07000a;
+        public static final int subtract=0x7f070006;
+        public static final int total=0x7f070004;
+        public static final int tryCommand=0x7f070008;
     }
     public static final class style {
         /** 
@@ -102,10 +110,13 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f060000;
+        public static final int AppBaseTheme=0x7f080000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f060001;
+        public static final int AppTheme=0x7f080001;
+    }
+    public static final class xml {
+        public static final int prefs=0x7f040000;
     }
 }
