@@ -15,9 +15,15 @@ public final class R {
     public static final class attr {
     }
     public static final class drawable {
-        public static final int android=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
-        public static final int octocat=0x7f020002;
+        public static final int a=0x7f020000;
+        public static final int android=0x7f020001;
+        public static final int b=0x7f020002;
+        public static final int c=0x7f020003;
+        public static final int green_ball=0x7f020004;
+        public static final int ic_launcher=0x7f020005;
+        public static final int octocat=0x7f020006;
+        public static final int orange_ball=0x7f020007;
+        public static final int red_ball=0x7f020008;
     }
     public static final class id {
         public static final int Things=0x7f0a0006;
