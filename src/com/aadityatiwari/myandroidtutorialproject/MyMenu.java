@@ -6,18 +6,26 @@ import android.os.Bundle;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class MyMenu extends ListActivity {
 
 	String[] classes = { "StartingPoint", "Splash", "TextPlay", "Email",
-			"Camera", "RelativeLayoutGetData" };
+			"Camera", "RelativeLayoutGetData", "MyGraphics" };
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+
+		/* Full Screen Window block--BEGINS */
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+				WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		/* Full Screen Window block --ENDS */
 		setListAdapter(new ArrayAdapter<String>(MyMenu.this,
 				android.R.layout.simple_list_item_1, classes));
 
