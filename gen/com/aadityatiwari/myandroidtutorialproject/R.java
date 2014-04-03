@@ -80,7 +80,8 @@ public final class R {
         public static final int test_menu=0x7f090000;
     }
     public static final class raw {
-        public static final int winged=0x7f050000;
+        public static final int explosion=0x7f050000;
+        public static final int winged=0x7f050001;
     }
     public static final class string {
         public static final int add=0x7f070005;
