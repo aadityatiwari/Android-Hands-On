@@ -54,6 +54,14 @@ public class MyGraphicsSurface extends Activity implements OnTouchListener {
 	@Override
 	public boolean onTouch(View v, MotionEvent event) {
 		// TODO Auto-generated method stub
+		
+		// Added below sleep logic to maintain frames per second (fps)
+		try {
+			Thread.sleep(50);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		x = event.getX();
 		y = event.getY();
 
