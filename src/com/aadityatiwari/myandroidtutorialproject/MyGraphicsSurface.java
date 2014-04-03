@@ -3,6 +3,7 @@ package com.aadityatiwari.myandroidtutorialproject;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -13,7 +14,7 @@ import android.view.View.OnTouchListener;
 
 public class MyGraphicsSurface extends Activity implements OnTouchListener {
 
-	MyAnimationSurfaceView ourSurfaceView;
+	MyAnimationSurfaceView myAnimationSurfaceView;
 	float x, y, sX, sY, fX, fY;
 	Bitmap bmS, bmF, test;
 	float dX, dY, aniX, aniY, scaledX, scaledY;
@@ -22,27 +23,27 @@ public class MyGraphicsSurface extends Activity implements OnTouchListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		ourSurfaceView = new MyAnimationSurfaceView(this);
-		ourSurfaceView.setOnTouchListener(this);
+		myAnimationSurfaceView = new MyAnimationSurfaceView(this);
+		myAnimationSurfaceView.setOnTouchListener(this);
 		x = 0;
 		y = 0;
 		sX = 0;
 		sY = 0;
 		fX = 0;
 		fY = 0;
-		setContentView(ourSurfaceView);
+		setContentView(myAnimationSurfaceView);
 	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
-		ourSurfaceView.pause();
+		myAnimationSurfaceView.pause();
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
-		ourSurfaceView.resume();
+		myAnimationSurfaceView.resume();
 	}
 
 	@Override
@@ -52,7 +53,7 @@ public class MyGraphicsSurface extends Activity implements OnTouchListener {
 		y = event.getY();
 		return false;
 	}
-	
+
 	public class MyAnimationSurfaceView extends SurfaceView implements Runnable {
 
 		SurfaceHolder ourSurfaceHolder;
@@ -72,6 +73,12 @@ public class MyGraphicsSurface extends Activity implements OnTouchListener {
 				}
 				Canvas canvas = ourSurfaceHolder.lockCanvas();
 				canvas.drawRGB(240, 240, 240);
+
+				if (x != 0 && y != 0) {
+					Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.red_ball);
+					canvas.drawBitmap(bmp, x, y, null);
+					
+				}
 				ourSurfaceHolder.unlockCanvasAndPost(canvas);
 			}
 		}
