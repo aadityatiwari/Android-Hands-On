@@ -7,6 +7,7 @@ import java.io.IOException;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.AsyncTask;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -77,6 +78,27 @@ public class InternalData extends Activity implements OnClickListener {
 			break;
 
 		case R.id.bLoadPrefs:
+
+			new LoadSomeStuff().execute(InternalDataFileName);
+
+			break;
+
+		}
+	};
+
+	public class LoadSomeStuff extends AsyncTask<String, Integer, String> {
+
+		@Override
+		protected void onPreExecute() {
+			// TODO Auto-generated method stub
+			super.onPreExecute();
+			// s =
+			// "Just setting this string, to avoid errors. It won't do anything";
+		}
+
+		@Override
+		protected String doInBackground(String... params) {
+			// TODO Auto-generated method stub
 			FileInputStream fis = null;
 			String collected = null;
 			try {
@@ -96,15 +118,28 @@ public class InternalData extends Activity implements OnClickListener {
 			} finally {
 				try {
 					fis.close();
-					tvDataResults.setText(collected);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
-
-			break;
-
+			return collected;
 		}
-	};
+
+		@Override
+		protected void onProgressUpdate(Integer... progress) {
+			// TODO Auto-generated method stub
+			super.onProgressUpdate(progress);
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			// TODO Auto-generated method stub
+			super.onPostExecute(result);
+			
+			//Set the textView label with result string
+			tvDataResults.setText(result);
+		}
+
+	}
 }
