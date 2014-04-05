@@ -12,6 +12,7 @@ import android.widget.TextView;
 public class SharedPrefs extends Activity implements OnClickListener {
 	EditText etSharedData;
 	TextView tvDataResults;
+	// Think of SharedPreferences as Folder which can holds multiple files
 	SharedPreferences sharedPreferencesData;
 	public static final String sharedPreferencesDataFileName = "MySharedPreferencesDataFile";
 
