@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.view.View;
@@ -88,12 +89,16 @@ public class InternalData extends Activity implements OnClickListener {
 
 	public class LoadSomeStuff extends AsyncTask<String, Integer, String> {
 
+		ProgressDialog dialog;
+
 		@Override
 		protected void onPreExecute() {
 			// TODO Auto-generated method stub
 			super.onPreExecute();
-			// s =
-			// "Just setting this string, to avoid errors. It won't do anything";
+			dialog = new ProgressDialog(InternalData.this);
+			dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+			dialog.setMax(100);
+			dialog.show();
 		}
 
 		@Override
@@ -101,6 +106,24 @@ public class InternalData extends Activity implements OnClickListener {
 			// TODO Auto-generated method stub
 			FileInputStream fis = null;
 			String collected = null;
+
+			// After ProgressDialog creation in onPreExecute(), we'll increment
+			// the progress by calling the publishProgress and then wait for
+			// 100ms before calling again. Once loop is processed We should
+			// dismiss the dialog.
+			// ProgressDialog logic --BEGINS
+			for (int i = 0; i < 20; i++) {
+				publishProgress(5);
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			dialog.dismiss();
+			// ProgressDialog logic --ENDS
+
 			try {
 				fis = openFileInput(InternalDataFileName);
 				byte[] dataArray = new byte[fis.available()];
@@ -130,14 +153,15 @@ public class InternalData extends Activity implements OnClickListener {
 		protected void onProgressUpdate(Integer... progress) {
 			// TODO Auto-generated method stub
 			super.onProgressUpdate(progress);
+			dialog.incrementProgressBy(progress[0]);
 		}
 
 		@Override
 		protected void onPostExecute(String result) {
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
-			
-			//Set the textView label with result string
+
+			// Set the textView label with result string
 			tvDataResults.setText(result);
 		}
 
