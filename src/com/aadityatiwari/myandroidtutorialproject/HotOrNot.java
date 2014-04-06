@@ -2,6 +2,7 @@ package com.aadityatiwari.myandroidtutorialproject;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -24,7 +25,7 @@ public class HotOrNot {
 		ourContext = c;
 	}
 
-	public HotOrNot open() throws SQLException{
+	public HotOrNot open() throws SQLException {
 		ourHelper = new DbHelper(ourContext);
 		ourDatabase = ourHelper.getWritableDatabase();
 
@@ -35,7 +36,7 @@ public class HotOrNot {
 		ContentValues cv = new ContentValues();
 		cv.put(KEY_NAME, name);
 		cv.put(KEY_HOTNESS, hotness);
-		
+
 		return ourDatabase.insert(DATABASE_TABLE, null, cv);
 	}
 
@@ -68,4 +69,22 @@ public class HotOrNot {
 
 	}
 
+	public String getData() {
+		// TODO Auto-generated method stub
+		String[] columns = new String[] { KEY_ROWID, KEY_NAME, KEY_HOTNESS };
+		Cursor c = ourDatabase.query(DATABASE_TABLE, columns, null, null, null,
+				null, null);
+		String result = "";
+
+		int iRow = c.getColumnIndex(KEY_ROWID);
+		int iName = c.getColumnIndex(KEY_NAME);
+		int iHotness = c.getColumnIndex(KEY_HOTNESS);
+
+		for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+			result += c.getString(iRow) + ", " + c.getString(iName) + ", "
+					+ c.getString(iHotness) + "\n";
+		}
+
+		return result;
+	}
 }

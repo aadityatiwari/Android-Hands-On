@@ -2,6 +2,7 @@ package com.aadityatiwari.myandroidtutorialproject;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -46,6 +47,14 @@ public class SQLiteExample extends Activity implements OnClickListener {
 				entry.close();
 			} catch (Exception e) {
 				didItWork = false;
+				String exceptionString = e.toString();
+				Dialog d = new Dialog(this);
+				d.setTitle("Exception occured!");
+				TextView tv = new TextView(this);
+				tv.setText(exceptionString);
+				d.setContentView(tv);
+				d.show();
+
 			} finally {
 				if (didItWork) {
 					Dialog d = new Dialog(this);
@@ -60,7 +69,9 @@ public class SQLiteExample extends Activity implements OnClickListener {
 			break;
 
 		case R.id.bSQLopenView:
-
+			Intent i = new Intent(
+					"com.aadityatiwari.myandroidtutorialproject.SQLVIEW");
+			startActivity(i);
 			break;
 		}
 
