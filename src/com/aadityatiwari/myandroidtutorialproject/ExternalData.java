@@ -1,10 +1,15 @@
 package com.aadityatiwari.myandroidtutorialproject;
 
 import java.io.File;
-
-import com.thenewboston.travis.R;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 import android.app.Activity;
+import android.media.MediaScannerConnection;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
@@ -16,6 +21,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ExternalData extends Activity implements OnClickListener,
 		OnItemSelectedListener {
@@ -82,6 +88,55 @@ public class ExternalData extends Activity implements OnClickListener,
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
 		case R.id.bSaveFile:
+			String f = saveFile.getText().toString();
+			file = new File(path, f + ".png");
+
+			checkState();
+			if (canW == canR == true) {
+
+				path.mkdirs();
+				try {
+					InputStream is = getResources().openRawResource(
+							R.drawable.green_ball);
+					OutputStream os = new FileOutputStream(file);
+					byte[] data = new byte[is.available()];
+					os.write(data);
+					is.close();
+					os.close();
+
+					Toast t = Toast.makeText(ExternalData.this,
+							"File has been saved", Toast.LENGTH_LONG);
+					t.show();
+
+					// Update files for the user to use
+					MediaScannerConnection
+							.scanFile(
+									ExternalData.this,
+									new String[] { file.toString() },
+									null,
+									new MediaScannerConnection.OnScanCompletedListener() {
+
+										@Override
+										public void onScanCompleted(
+												String path, Uri uri) {
+											// TODO Auto-generated method stub
+											Toast t = Toast.makeText(
+													ExternalData.this,
+													"Scan complete",
+													Toast.LENGTH_LONG);
+											t.show();
+										}
+									});
+
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+			}
 
 			break;
 
