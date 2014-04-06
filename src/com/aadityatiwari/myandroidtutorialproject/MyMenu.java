@@ -17,7 +17,7 @@ public class MyMenu extends ListActivity {
 			"Camera", "RelativeLayoutGetData", "MyGraphics",
 			"MyGraphicsSurface", "SoundStuff", "Slider", "Tabs",
 			"SimpleBrowser", "Flipper", "SharedPrefs", "InternalData",
-			"ExternalData" };
+			"ExternalData", "SQLiteExample" };
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
