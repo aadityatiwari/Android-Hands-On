@@ -20,7 +20,7 @@ public class SQLView extends Activity {
 		info.close();
 		
 		tvSQLinfo.setText(stringData);
-
+		
 	}
 
 }

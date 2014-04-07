@@ -32,6 +32,57 @@ public class HotOrNot {
 		return this;
 	}
 
+	public void close() {
+		ourHelper.close();
+	}
+
+	public String getData() {
+		// TODO Auto-generated method stub
+		String[] columns = new String[] { KEY_ROWID, KEY_NAME, KEY_HOTNESS };
+		Cursor c = ourDatabase.query(DATABASE_TABLE, columns, null, null, null,
+				null, null);
+		String result = "";
+
+		int iRow = c.getColumnIndex(KEY_ROWID);
+		int iName = c.getColumnIndex(KEY_NAME);
+		int iHotness = c.getColumnIndex(KEY_HOTNESS);
+
+		for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+			result += c.getString(iRow) + ", " + c.getString(iName) + ", "
+					+ c.getString(iHotness) + "\n";
+		}
+
+		return result;
+	}
+
+	public String getName(long l) {
+		// TODO Auto-generated method stub
+		String[] columns = new String[] { KEY_ROWID, KEY_NAME, KEY_HOTNESS };
+		Cursor c = ourDatabase.query(DATABASE_TABLE, columns, KEY_ROWID + "="
+				+ l, null, null, null, null);
+		if (c != null) {
+			c.moveToFirst();
+			int iName = c.getColumnIndex(KEY_NAME);
+			String name = c.getString(iName);
+			return name;
+		}
+		return null;
+	}
+
+	public String getHotness(long l) {
+		// TODO Auto-generated method stub
+		String[] columns = new String[] { KEY_ROWID, KEY_NAME, KEY_HOTNESS };
+		Cursor c = ourDatabase.query(DATABASE_TABLE, columns, KEY_ROWID + "="
+				+ l, null, null, null, null);
+		if (c != null) {
+			c.moveToFirst();
+			int iHotness = c.getColumnIndex(KEY_HOTNESS);
+			String hotness = c.getString(iHotness);
+			return hotness;
+		}
+		return null;
+	}
+
 	public long createEntry(String name, String hotness) {
 		ContentValues cv = new ContentValues();
 		cv.put(KEY_NAME, name);
@@ -40,10 +91,7 @@ public class HotOrNot {
 		return ourDatabase.insert(DATABASE_TABLE, null, cv);
 	}
 
-	public void close() {
-		ourHelper.close();
-	}
-
+	// DbHelper static inner class -- BEGINS
 	private static class DbHelper extends SQLiteOpenHelper {
 
 		public DbHelper(Context context) {
@@ -68,23 +116,6 @@ public class HotOrNot {
 		}
 
 	}
+	// DbHelper static inner class -- ENDS
 
-	public String getData() {
-		// TODO Auto-generated method stub
-		String[] columns = new String[] { KEY_ROWID, KEY_NAME, KEY_HOTNESS };
-		Cursor c = ourDatabase.query(DATABASE_TABLE, columns, null, null, null,
-				null, null);
-		String result = "";
-
-		int iRow = c.getColumnIndex(KEY_ROWID);
-		int iName = c.getColumnIndex(KEY_NAME);
-		int iHotness = c.getColumnIndex(KEY_HOTNESS);
-
-		for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
-			result += c.getString(iRow) + ", " + c.getString(iName) + ", "
-					+ c.getString(iHotness) + "\n";
-		}
-
-		return result;
-	}
 }

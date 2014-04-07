@@ -12,8 +12,8 @@ import android.widget.TextView;
 
 public class SQLiteExample extends Activity implements OnClickListener {
 
-	Button sqlUpdate, sqlView;
-	EditText sqlName, sqlHotness;
+	Button sqlUpdate, sqlView, sqlModify, sqlGetInfo, sqlDelete;
+	EditText sqlName, sqlHotness, sqlRow;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +28,15 @@ public class SQLiteExample extends Activity implements OnClickListener {
 
 		sqlView.setOnClickListener(this);
 		sqlUpdate.setOnClickListener(this);
+
+		sqlRow = (EditText) findViewById(R.id.etSQLrowInfo);
+
+		sqlModify = (Button) findViewById(R.id.bSQLmodify);
+		sqlGetInfo = (Button) findViewById(R.id.bgetInfo);
+		sqlDelete = (Button) findViewById(R.id.bSQLdelete);
+		sqlDelete.setOnClickListener(this);
+		sqlModify.setOnClickListener(this);
+		sqlGetInfo.setOnClickListener(this);
 
 	}
 
@@ -72,6 +81,30 @@ public class SQLiteExample extends Activity implements OnClickListener {
 			Intent i = new Intent(
 					"com.aadityatiwari.myandroidtutorialproject.SQLVIEW");
 			startActivity(i);
+			break;
+
+		case R.id.bgetInfo:
+
+			String s = sqlRow.getText().toString();
+			long l = Long.parseLong(s);
+
+			HotOrNot honInstance = new HotOrNot(this);
+			honInstance.open();
+			String returnedName = honInstance.getName(l);
+			String returnedHotness = honInstance.getHotness(l);
+			honInstance.close();
+
+			sqlName.setText(returnedName);
+			sqlHotness.setText(returnedHotness);
+
+			break;
+
+		case R.id.bSQLmodify:
+
+			break;
+
+		case R.id.bSQLdelete:
+
 			break;
 		}
 
