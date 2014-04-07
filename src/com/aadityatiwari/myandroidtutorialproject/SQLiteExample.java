@@ -85,17 +85,28 @@ public class SQLiteExample extends Activity implements OnClickListener {
 
 		case R.id.bgetInfo:
 
-			String s = sqlRow.getText().toString();
-			long l = Long.parseLong(s);
+			try {
+				String s = sqlRow.getText().toString();
+				long l = Long.parseLong(s);
 
-			HotOrNot honInstance = new HotOrNot(this);
-			honInstance.open();
-			String returnedName = honInstance.getName(l);
-			String returnedHotness = honInstance.getHotness(l);
-			honInstance.close();
+				HotOrNot honInstance = new HotOrNot(this);
+				honInstance.open();
+				String returnedName = honInstance.getName(l);
+				String returnedHotness = honInstance.getHotness(l);
+				honInstance.close();
 
-			sqlName.setText(returnedName);
-			sqlHotness.setText(returnedHotness);
+				sqlName.setText(returnedName);
+				sqlHotness.setText(returnedHotness);
+			} catch (Exception e1) {
+
+				String error = e1.toString();
+				Dialog d = new Dialog(this);
+				d.setTitle("Dang it!");
+				TextView tv = new TextView(this);
+				tv.setText(error);
+				d.setContentView(tv);
+				d.show();
+			}
 
 			break;
 
