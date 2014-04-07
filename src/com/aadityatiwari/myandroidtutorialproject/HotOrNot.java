@@ -55,7 +55,7 @@ public class HotOrNot {
 		return result;
 	}
 
-	public String getName(long l) {
+	public String getName(long l) throws SQLException {
 		// TODO Auto-generated method stub
 		String[] columns = new String[] { KEY_ROWID, KEY_NAME, KEY_HOTNESS };
 		Cursor c = ourDatabase.query(DATABASE_TABLE, columns, KEY_ROWID + "="
@@ -69,7 +69,7 @@ public class HotOrNot {
 		return null;
 	}
 
-	public String getHotness(long l) {
+	public String getHotness(long l) throws SQLException {
 		// TODO Auto-generated method stub
 		String[] columns = new String[] { KEY_ROWID, KEY_NAME, KEY_HOTNESS };
 		Cursor c = ourDatabase.query(DATABASE_TABLE, columns, KEY_ROWID + "="
@@ -83,12 +83,27 @@ public class HotOrNot {
 		return null;
 	}
 
-	public long createEntry(String name, String hotness) {
+	public long createEntry(String name, String hotness) throws SQLException {
 		ContentValues cv = new ContentValues();
 		cv.put(KEY_NAME, name);
 		cv.put(KEY_HOTNESS, hotness);
 
 		return ourDatabase.insert(DATABASE_TABLE, null, cv);
+	}
+
+	public void updateEntry(long lRow, String name, String hotness)
+			throws SQLException {
+		// TODO Auto-generated method stub
+		ContentValues cv = new ContentValues();
+		cv.put(KEY_NAME, name);
+		cv.put(KEY_HOTNESS, hotness);
+
+		ourDatabase.update(DATABASE_TABLE, cv, KEY_ROWID + "=" + lRow, null);
+	}
+
+	public void deleteEntry(long lRow) throws SQLException {
+
+		ourDatabase.delete(DATABASE_TABLE, KEY_ROWID + "=" + lRow, null);
 	}
 
 	// DbHelper static inner class -- BEGINS

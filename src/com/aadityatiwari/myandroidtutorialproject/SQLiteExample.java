@@ -101,10 +101,53 @@ public class SQLiteExample extends Activity implements OnClickListener {
 
 		case R.id.bSQLmodify:
 
+			try {
+
+				String s1 = sqlRow.getText().toString();
+				long l1 = Long.parseLong(s1);
+
+				String name = sqlName.getText().toString();
+				String hotness = sqlHotness.getText().toString();
+
+				HotOrNot honModify = new HotOrNot(SQLiteExample.this);
+				honModify.open();
+				honModify.updateEntry(l1, name, hotness);
+				honModify.close();
+			} catch (Exception e) {
+
+				String exceptionString = e.toString();
+				Dialog d = new Dialog(this);
+				d.setTitle("Exception occured!");
+				TextView tv = new TextView(this);
+				tv.setText(exceptionString);
+				d.setContentView(tv);
+				d.show();
+
+			}
+
 			break;
 
 		case R.id.bSQLdelete:
 
+			try {
+				String s2 = sqlRow.getText().toString();
+				long l2 = Long.parseLong(s2);
+
+				HotOrNot honDelete = new HotOrNot(SQLiteExample.this);
+				honDelete.open();
+				honDelete.deleteEntry(l2);
+				honDelete.close();
+			} catch (Exception e) {
+
+				String exceptionString = e.toString();
+				Dialog d = new Dialog(this);
+				d.setTitle("Exception occured!");
+				TextView tv = new TextView(this);
+				tv.setText(exceptionString);
+				d.setContentView(tv);
+				d.show();
+
+			}
 			break;
 		}
 
