@@ -101,7 +101,7 @@ public class SQLiteExample extends Activity implements OnClickListener {
 
 				String error = e1.toString();
 				Dialog d = new Dialog(this);
-				d.setTitle("Dang it!");
+				d.setTitle("GetInfo: Exception occured !");
 				TextView tv = new TextView(this);
 				tv.setText(error);
 				d.setContentView(tv);
@@ -128,7 +128,7 @@ public class SQLiteExample extends Activity implements OnClickListener {
 
 				String exceptionString = e.toString();
 				Dialog d = new Dialog(this);
-				d.setTitle("Exception occured!");
+				d.setTitle("SqlModify: Exception occured!");
 				TextView tv = new TextView(this);
 				tv.setText(exceptionString);
 				d.setContentView(tv);
@@ -152,7 +152,7 @@ public class SQLiteExample extends Activity implements OnClickListener {
 
 				String exceptionString = e.toString();
 				Dialog d = new Dialog(this);
-				d.setTitle("Exception occured!");
+				d.setTitle("SqlDelete: Exception occured!");
 				TextView tv = new TextView(this);
 				tv.setText(exceptionString);
 				d.setContentView(tv);
