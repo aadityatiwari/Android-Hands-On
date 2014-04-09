@@ -17,7 +17,7 @@ public class MyMenu extends ListActivity {
 			"SharedPrefs", "Flipper", "SimpleBrowser", "Tabs", "Slider",
 			"SoundStuff", "MyGraphicsSurface", "MyGraphics",
 			"RelativeLayoutGetData", "Camera", "Email", "TextPlay", "Splash",
-			"StartingPoint" };
+			"StartingPoint", "FirstMapActivity" };
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
