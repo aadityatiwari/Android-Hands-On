@@ -13,7 +13,7 @@ import android.widget.ListView;
 
 public class MyMenu extends ListActivity {
 
-	String[] classes = { "SecondMapActivity", "FirstMapActivity", "Accelerate", "SQLiteExample",
+	String[] classes = { "SecondMapActivity_v1", "FirstMapActivity", "Accelerate", "SQLiteExample",
 			"ExternalData", "InternalData", "SharedPrefs", "Flipper",
 			"SimpleBrowser", "Tabs", "Slider", "SoundStuff",
 			"MyGraphicsSurface", "MyGraphics", "RelativeLayoutGetData",
