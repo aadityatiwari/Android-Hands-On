@@ -5,10 +5,15 @@ import java.util.List;
 import java.util.Locale;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.location.Address;
+import android.location.Criteria;
 import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.widget.Toast;
@@ -19,8 +24,10 @@ import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
 import com.google.android.maps.MyLocationOverlay;
 import com.google.android.maps.Overlay;
+import com.google.android.maps.OverlayItem;
 
-public class SecondMapActivity_v1 extends MapActivity {
+public class SecondMapActivity_v1 extends MapActivity implements
+		LocationListener {
 
 	MapView map;
 	long start;
@@ -32,6 +39,10 @@ public class SecondMapActivity_v1 extends MapActivity {
 	int x, y;
 	GeoPoint touchedPoint;
 	Drawable d;
+	int lat;
+	int longi;
+	LocationManager lm;
+	String towers;
 
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -53,20 +64,48 @@ public class SecondMapActivity_v1 extends MapActivity {
 		controller.animateTo(point);
 		controller.setZoom(6);
 
+		d = getResources().getDrawable(R.drawable.android);
+
+		lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+		Criteria crit = new Criteria();
+
+		towers = lm.getBestProvider(crit, false);
+		Location location = lm.getLastKnownLocation(towers);
+
+		if (location != null) {
+
+			lat = (int) (location.getLatitude() * 1E6);
+			longi = (int) (location.getLongitude() * 1E6);
+
+			GeoPoint ourLocation = new GeoPoint(lat, longi);
+			OverlayItem overlayItem = new OverlayItem(ourLocation,
+					"2-Ist String", "2-2nd String");
+			PinpointItemizedOverlay pinpoint = new PinpointItemizedOverlay(d,
+					SecondMapActivity_v1.this);
+			pinpoint.insertPinpoint(overlayItem);
+			overlayList.add(pinpoint);
+		} else {
+			Toast.makeText(getBaseContext(), "Couldn't get provider",
+					Toast.LENGTH_SHORT).show();
+		}
+
 	}
 
 	@Override
 	protected void onPause() {
 		// TODO Auto-generated method stub
-		super.onPause();
 		compass.disableCompass();
+		super.onPause();
+		lm.removeUpdates(this);
+		finish();
 	}
 
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
-		super.onResume();
 		compass.enableCompass();
+		super.onResume();
+		lm.requestLocationUpdates(towers, 500, 1, this);
 	}
 
 	@Override
@@ -107,7 +146,14 @@ public class SecondMapActivity_v1 extends MapActivity {
 							@Override
 							public void onClick(DialogInterface dialog,
 									int which) {
-								// TODO Auto-generated method stub
+
+								OverlayItem overlayItem = new OverlayItem(
+										touchedPoint, "2-Ist String",
+										"2-2nd String");
+								PinpointItemizedOverlay pinpoint = new PinpointItemizedOverlay(
+										d, SecondMapActivity_v1.this);
+								pinpoint.insertPinpoint(overlayItem);
+								overlayList.add(pinpoint);
 
 							}
 						});
@@ -128,11 +174,13 @@ public class SecondMapActivity_v1 extends MapActivity {
 											touchedPoint.getLatitudeE6() / 1E6,
 											touchedPoint.getLongitudeE6() / 1E6,
 											1);
-									
-									if(address.size() > 0){
+
+									if (address.size() > 0) {
 										String display = "";
-										for(int i=0; i<address.get(0).getMaxAddressLineIndex(); i++){
-											display += address.get(0).getAddressLine(i) + "\n";
+										for (int i = 0; i < address.get(0)
+												.getMaxAddressLineIndex(); i++) {
+											display += address.get(0)
+													.getAddressLine(i) + "\n";
 										}
 										Toast t3 = Toast.makeText(
 												getBaseContext(), display,
@@ -158,16 +206,16 @@ public class SecondMapActivity_v1 extends MapActivity {
 							public void onClick(DialogInterface dialog,
 									int which) {
 								// TODO Auto-generated method stub
-								
-								if(map.isSatellite()){
+
+								if (map.isSatellite()) {
 									map.setSatellite(false);
 									map.setStreetView(true);
 								}
-								
+
 								else {
 									map.setStreetView(false);
 									map.setSatellite(true);
-									
+
 								}
 
 							}
@@ -180,6 +228,40 @@ public class SecondMapActivity_v1 extends MapActivity {
 			}
 			return false;
 		}
+	}
+
+	@Override
+	public void onLocationChanged(Location location) {
+		// TODO Auto-generated method stub
+		lat = (int) (location.getLatitude() * 1E6);
+		longi = (int) (location.getLongitude() * 1E6);
+		
+		GeoPoint ourLocation = new GeoPoint(lat, longi);
+		OverlayItem overlayItem = new OverlayItem(ourLocation,
+				"2-Ist String", "2-2nd String");
+		PinpointItemizedOverlay pinpoint = new PinpointItemizedOverlay(d,
+				SecondMapActivity_v1.this);
+		pinpoint.insertPinpoint(overlayItem);
+		overlayList.add(pinpoint);
+		
+	}
+
+	@Override
+	public void onStatusChanged(String provider, int status, Bundle extras) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onProviderEnabled(String provider) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onProviderDisabled(String provider) {
+		// TODO Auto-generated method stub
+
 	}
 
 	// Overlay inner class -- ENDS
