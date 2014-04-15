@@ -98,10 +98,10 @@ public class SecondMapActivity_v1 extends MapActivity {
 			if (stop - start > 1500) {
 				AlertDialog alert = new AlertDialog.Builder(
 						SecondMapActivity_v1.this).create();
-				alert.setTitle("AlertDialog Title: Pick an option");
+				alert.setTitle("Pick an option");
 				alert.setMessage("AlertDialog Message");
 
-				alert.setButton("AlertDialog Button: Pinpoint",
+				alert.setButton("Pinpoint",
 						new DialogInterface.OnClickListener() {
 
 							@Override
@@ -112,7 +112,7 @@ public class SecondMapActivity_v1 extends MapActivity {
 							}
 						});
 
-				alert.setButton2("AlertDialog Button: Address",
+				alert.setButton2("Get Address",
 						new DialogInterface.OnClickListener() {
 
 							@Override
@@ -151,7 +151,7 @@ public class SecondMapActivity_v1 extends MapActivity {
 							}
 						});
 
-				alert.setButton3("AlertDialog Button: Option 3",
+				alert.setButton3("Toggle view",
 						new DialogInterface.OnClickListener() {
 
 							@Override
