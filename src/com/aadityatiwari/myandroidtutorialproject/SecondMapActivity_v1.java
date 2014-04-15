@@ -11,6 +11,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
 import android.view.MotionEvent;
+import android.widget.Toast;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
@@ -127,6 +128,17 @@ public class SecondMapActivity_v1 extends MapActivity {
 											touchedPoint.getLatitudeE6() / 1E6,
 											touchedPoint.getLongitudeE6() / 1E6,
 											1);
+									
+									if(address.size() > 0){
+										String display = "";
+										for(int i=0; i<address.get(0).getMaxAddressLineIndex(); i++){
+											display += address.get(0).getAddressLine(i) + "\n";
+										}
+										Toast t3 = Toast.makeText(
+												getBaseContext(), display,
+												Toast.LENGTH_LONG);
+										t3.show();
+									}
 
 								} catch (IOException e) {
 
@@ -146,6 +158,17 @@ public class SecondMapActivity_v1 extends MapActivity {
 							public void onClick(DialogInterface dialog,
 									int which) {
 								// TODO Auto-generated method stub
+								
+								if(map.isSatellite()){
+									map.setSatellite(false);
+									map.setStreetView(true);
+								}
+								
+								else {
+									map.setStreetView(false);
+									map.setSatellite(true);
+									
+								}
 
 							}
 						});
