@@ -9,6 +9,9 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
+/**
+ * Class to get the info from Internet
+ * */
 public class HttpGetMethodExample {
 
 	public String getInternetData() throws Exception {
