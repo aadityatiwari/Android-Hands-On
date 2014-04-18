@@ -1,6 +1,7 @@
 package com.aadityatiwari.myandroidtutorialproject;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URI;
 
@@ -20,7 +21,7 @@ public class HttpGetMethodExample {
 
 		try {
 			HttpClient client = new DefaultHttpClient();
-			URI website = new URI("http://aadityatiwari.com");
+			URI website = new URI("http://www.aadityatiwari.com");
 			HttpGet request = new HttpGet();
 			request.setURI(website);
 			HttpResponse response = client.execute(request);
@@ -37,6 +38,9 @@ public class HttpGetMethodExample {
 			data = sb.toString();
 			return data;
 
+		} catch (IOException e) {
+			e.printStackTrace();
+			return data;
 		} finally {
 			if (in != null) {
 				try {
