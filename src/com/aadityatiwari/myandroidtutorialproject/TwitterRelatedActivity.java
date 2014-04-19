@@ -24,6 +24,13 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+
+import com.aadityatiwari.myandroidtutorialproject.twitter.Authenticated;
+import com.aadityatiwari.myandroidtutorialproject.twitter.Tweet;
+import com.aadityatiwari.myandroidtutorialproject.twitter.TwitterList;
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 
 /**
  * Demonstrates how to use a twitter application keys to access a user's
@@ -58,8 +65,8 @@ public class TwitterRelatedActivity extends ListActivity {
 
 	// Uses an AsyncTask to download a Twitter user's timeline
 	private class DownloadTwitterTask extends AsyncTask<String, Void, String> {
-		final static String CONSUMER_KEY = "MY CONSUMER KEY";
-		final static String CONSUMER_SECRET = "MY CONSUMER SECRET";
+		final static String CONSUMER_KEY = "";
+		final static String CONSUMER_SECRET = "";
 		final static String TwitterTokenURL = "https://api.twitter.com/oauth2/token";
 		final static String TwitterStreamURL = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=";
 
@@ -77,8 +84,32 @@ public class TwitterRelatedActivity extends ListActivity {
 		// is an Array list of tweets
 		@Override
 		protected void onPostExecute(String result) {
-			// TODO Auto-generated method stub
-			super.onPostExecute(result);
+			TwitterList twits = jsonToTwitterList(result);
+
+			// Lets write the results to the console as well
+			for (Tweet tweet : twits) {
+				Log.i(LOG_TAG, tweet.getText());
+			}
+
+			// send the tweets to the adapter for rendering
+			ArrayAdapter<Tweet> adapter = new ArrayAdapter<Tweet>(activity,
+					android.R.layout.simple_list_item_1, twits);
+			setListAdapter(adapter);
+
+		}
+
+		// converts a string of JSON data into a Twitter object
+		private TwitterList jsonToTwitterList(String result) {
+			TwitterList twits = null;
+			if (result != null && !result.isEmpty()) {
+				try {
+					Gson gson = new Gson();
+					twits = gson.fromJson(result, TwitterList.class);
+				} catch (IllegalStateException ex) {
+
+				}
+			}
+			return twits;
 		}
 
 		private String getTwitterStream(String userName) {
@@ -109,6 +140,7 @@ public class TwitterRelatedActivity extends ListActivity {
 						"grant_type=client_credentials"));
 
 				String rawAuthorization = getResponseBody(httpPost);
+				Authenticated auth = jsonToAuthenticated(rawAuthorization);
 
 			} catch (UnsupportedEncodingException e) {
 				// TODO Auto-generated catch block
@@ -140,7 +172,6 @@ public class TwitterRelatedActivity extends ListActivity {
 					while ((line = bReader.readLine()) != null) {
 						sb.append(line + nl);
 					}
-
 				} else {
 					sb.append(reason);
 				}
@@ -153,6 +184,23 @@ public class TwitterRelatedActivity extends ListActivity {
 
 			return sb.toString();
 
+		}
+
+		// convert a JSON authentication object into an Authenticated object
+		private Authenticated jsonToAuthenticated(String rawAuthorization) {
+			Authenticated auth = null;
+			if (rawAuthorization != null && !rawAuthorization.isEmpty()) {
+				try {
+					Gson gson = new Gson();
+					auth = gson.fromJson(rawAuthorization, Authenticated.class);
+				} catch (JsonSyntaxException e) {
+					// e.printStackTrace();
+				} catch (IllegalStateException e) {
+					// e.printStackTrace();
+				}
+			}
+
+			return auth;
 		}
 	}
 }
