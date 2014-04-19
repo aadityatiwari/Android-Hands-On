@@ -10,6 +10,7 @@ import java.net.URLEncoder;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.entity.StringEntity;
@@ -141,6 +142,27 @@ public class TwitterRelatedActivity extends ListActivity {
 
 				String rawAuthorization = getResponseBody(httpPost);
 				Authenticated auth = jsonToAuthenticated(rawAuthorization);
+
+				// Applications should verify that the value associated with the
+				// token_type key of the returned object is bearer
+
+				if (auth != null && auth.getToken_type().equals("bearer")) {
+
+					// Step 3: Authenticate API requests and include an
+					// Authorization header with the value of Bearer <>
+					HttpGet httpGet = new HttpGet(TwitterStreamURL + userName);
+
+					// construct a normal HTTPS request and include an
+					// Authorization
+					// header with the value of Bearer <>
+					httpGet.setHeader("Authorization",
+							"Bearer " + auth.getAccess_token());
+					httpGet.setHeader("Content-Type", "application/json");
+
+					// update the results with the body of the response
+					results = getResponseBody(httpGet);
+
+				}
 
 			} catch (UnsupportedEncodingException e) {
 				// TODO Auto-generated catch block
