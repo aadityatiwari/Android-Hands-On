@@ -225,7 +225,7 @@ containing a value of this type.
     }
     public static final class id {
         public static final int Things=0x7f07000b;
-        public static final int aboutUs=0x7f070059;
+        public static final int aboutUs=0x7f07005d;
         public static final int analogClock1=0x7f070012;
         public static final int bAdd=0x7f070026;
         public static final int bAddTab=0x7f070054;
@@ -251,11 +251,13 @@ containing a value of this type.
         public static final int bStartWatch=0x7f07004f;
         public static final int bStopWatch=0x7f070050;
         public static final int bSubtract=0x7f070027;
+        public static final int bWeather=0x7f07005b;
         public static final int bgetInfo=0x7f070048;
         public static final int button1=0x7f07001b;
         public static final int cbSlidable=0x7f070042;
         public static final int content=0x7f070040;
         public static final int etActions=0x7f07000e;
+        public static final int etCity=0x7f070059;
         public static final int etCommands=0x7f070055;
         public static final int etEmails=0x7f070006;
         public static final int etIntro=0x7f070008;
@@ -267,9 +269,10 @@ containing a value of this type.
         public static final int etSaveAs=0x7f070016;
         public static final int etSendData=0x7f07002b;
         public static final int etSharedPrefs=0x7f070030;
+        public static final int etState=0x7f07005a;
         public static final int etThings=0x7f07000c;
         public static final int etUrl=0x7f070034;
-        public static final int exit=0x7f07005b;
+        public static final int exit=0x7f07005f;
         public static final int handle=0x7f070041;
         public static final int handle1=0x7f07003b;
         public static final int handle2=0x7f07003c;
@@ -283,7 +286,7 @@ containing a value of this type.
         public static final int mvMain=0x7f07002f;
         public static final int none=0x7f070000;
         public static final int normal=0x7f070001;
-        public static final int preferences=0x7f07005a;
+        public static final int preferences=0x7f07005e;
         public static final int rA=0x7f070020;
         public static final int rB=0x7f070021;
         public static final int rC=0x7f070022;
@@ -314,6 +317,7 @@ containing a value of this type.
         public static final int tvSendText=0x7f070024;
         public static final int tvShowWatchResults=0x7f070051;
         public static final int tvTotalValueDisplay=0x7f070025;
+        public static final int tvWeather=0x7f07005c;
         public static final int viewFlipper1=0x7f07001a;
         public static final int wvBrowser=0x7f07003a;
     }
@@ -340,6 +344,7 @@ containing a value of this type.
         public static final int sqlview=0x7f030010;
         public static final int tabs=0x7f030011;
         public static final int text=0x7f030012;
+        public static final int weather=0x7f030013;
     }
     public static final class menu {
         public static final int test_menu=0x7f0c0000;
