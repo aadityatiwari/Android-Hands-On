@@ -1,5 +1,6 @@
 package com.aadityatiwari.myandroidtutorialproject;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -7,10 +8,12 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
 import android.app.Activity;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -27,7 +30,7 @@ public class WeatherRelatedActivity extends Activity implements OnClickListener 
 	static final String RESULT_MODE = "mode=xml";
 	static final String UNIT_METRICS = "units=metric";
 	TextView tv;
-	EditText city, state;
+	EditText city, country;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,36 +40,68 @@ public class WeatherRelatedActivity extends Activity implements OnClickListener 
 		Button b = (Button) findViewById(R.id.bWeather);
 		tv = (TextView) findViewById(R.id.tvWeather);
 		city = (EditText) findViewById(R.id.etCity);
-		state = (EditText) findViewById(R.id.etState);
+		country = (EditText) findViewById(R.id.etCountry);
 		b.setOnClickListener(this);
 	}
 
 	@Override
 	public void onClick(View v) {
-		String c = city.getText().toString();
-		String s = state.getText().toString();
+		String ci = city.getText().toString();
+		String co = country.getText().toString();
 
 		StringBuilder URL = new StringBuilder(baseURL);
-		URL.append(c + "," + s + QUERY_CONCAT_OPERATOR + RESULT_MODE
+		URL.append(ci + "," + co + QUERY_CONCAT_OPERATOR + RESULT_MODE
 				+ QUERY_CONCAT_OPERATOR + UNIT_METRICS);
 		String fullUrl = URL.toString();
 
-		try {
-			URL website = new URL(fullUrl);
-			// Getting XMLreader to parse data
-			SAXParserFactory spf = SAXParserFactory.newInstance();
-			SAXParser sp = spf.newSAXParser();
-			XMLReader xr = sp.getXMLReader();
+		new FetchTemperatureTask().execute(fullUrl);
+	}
 
-			HandlingWeatherXMLStuff xmlStuff = new HandlingWeatherXMLStuff();
-			xr.setContentHandler(xmlStuff);
+	private class FetchTemperatureTask extends AsyncTask<String, Void, String> {
 
-		} catch (MalformedURLException e) {
-			tv.setText("MalformedURLException");
-		} catch (ParserConfigurationException e) {
-			tv.setText("ParserConfigurationException");
-		} catch (SAXException e) {
-			tv.setText("SAXException");
+		@Override
+		protected String doInBackground(String... params) {
+			String result = null;
+
+			if (params != null && params.length > 0) {
+				result = getTemperatueData(params[0]);
+			}
+			return result;
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			// TODO Auto-generated method stub
+			// super.onPostExecute(result);
+			tv.setText(result);
+		}
+
+		private String getTemperatueData(String fullUrl) {
+			String result = null;
+			try {
+				URL website = new URL(fullUrl);
+				// Getting XMLreader to parse data
+				SAXParserFactory spf = SAXParserFactory.newInstance();
+				SAXParser sp = spf.newSAXParser();
+				XMLReader xr = sp.getXMLReader();
+
+				HandlingWeatherXMLStuff xmlStuff = new HandlingWeatherXMLStuff();
+				xr.setContentHandler(xmlStuff);
+				xr.parse(new InputSource(website.openStream()));
+
+				result = xmlStuff.getInformation();
+
+			} catch (MalformedURLException e) {
+				tv.setText("MalformedURLException");
+			} catch (ParserConfigurationException e) {
+				tv.setText("ParserConfigurationException");
+			} catch (SAXException e) {
+				tv.setText("SAXException");
+			} catch (IOException e) {
+				tv.setText("IOException");
+			}
+
+			return result;
 		}
 
 	}

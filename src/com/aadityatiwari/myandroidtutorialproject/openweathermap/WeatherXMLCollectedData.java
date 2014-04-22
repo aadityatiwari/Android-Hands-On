@@ -1,19 +1,25 @@
 package com.aadityatiwari.myandroidtutorialproject.openweathermap;
 
 public class WeatherXMLCollectedData {
-	private int temp = 0;
+	private String temp = null;
 	private String city = null;
+	private String country = null;
 
 	public void setCity(String c) {
 		city = c;
 	}
 
-	public void setTemp(int t) {
+	public void setTemp(String t) {
 		temp = t;
 	}
 
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
 	public String dataToString() {
-		return "In " + city + " the Current Temp in F is " + temp + " degrees";
+		return "Place: " + city + "," + country + " :: Temperatue is " + temp
+				+ "C";
 	}
 
 }

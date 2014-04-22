@@ -259,6 +259,7 @@ containing a value of this type.
         public static final int etActions=0x7f07000e;
         public static final int etCity=0x7f070059;
         public static final int etCommands=0x7f070055;
+        public static final int etCountry=0x7f07005a;
         public static final int etEmails=0x7f070006;
         public static final int etIntro=0x7f070008;
         public static final int etName=0x7f07000a;
@@ -269,7 +270,6 @@ containing a value of this type.
         public static final int etSaveAs=0x7f070016;
         public static final int etSendData=0x7f07002b;
         public static final int etSharedPrefs=0x7f070030;
-        public static final int etState=0x7f07005a;
         public static final int etThings=0x7f07000c;
         public static final int etUrl=0x7f070034;
         public static final int exit=0x7f07005f;

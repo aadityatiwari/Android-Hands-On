@@ -26,12 +26,12 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="State:"
+        android:text="Country:"
         android:textAppearance="?android:attr/textAppearanceLarge" >
     </TextView>
 
     <EditText
-        android:id="@+id/etState"
+        android:id="@+id/etCountry"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
     </EditText>
@@ -40,7 +40,7 @@
         android:id="@+id/bWeather"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" >
+        android:text="Get current weather" >
     </Button>
 
     <TextView
