@@ -7,6 +7,7 @@ import org.xml.sax.helpers.DefaultHandler;
 public class HandlingWeatherXMLStuff extends DefaultHandler {
 
 	private WeatherXMLCollectedData collectedinfo = new WeatherXMLCollectedData();
+	boolean ELEMENT_COUNTRY = false;
 
 	public String getInformation() {
 		return collectedinfo.dataToString();
@@ -20,12 +21,20 @@ public class HandlingWeatherXMLStuff extends DefaultHandler {
 			String city = attributes.getValue("name");
 			collectedinfo.setCity(city);
 		} else if (localName.equals("country")) {
-			String country = attributes.getValue("name");
-			collectedinfo.setCountry(country);
+			ELEMENT_COUNTRY = true;
 		} else if (localName.equals("temperature")) {
 			String temp = attributes.getValue("value");
-			//int t = Integer.parseInt(temp);
 			collectedinfo.setTemp(temp);
+		}
+	}
+
+	@Override
+	public void characters(char[] ch, int start, int length)
+			throws SAXException {
+		if (ELEMENT_COUNTRY) {
+			String country = new String(ch, start, length);
+			collectedinfo.setCountry(country);
+			ELEMENT_COUNTRY = false;
 		}
 	}
 }
