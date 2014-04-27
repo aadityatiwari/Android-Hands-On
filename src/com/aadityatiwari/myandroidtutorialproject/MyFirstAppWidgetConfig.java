@@ -1,6 +1,7 @@
 package com.aadityatiwari.myandroidtutorialproject;
 
 import android.app.Activity;
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
@@ -46,7 +47,15 @@ public class MyFirstAppWidgetConfig extends Activity implements OnClickListener 
 				R.layout.first_widget);
 		// Set textFromWidgetConfigTextView into the widget TextView field
 		views.setTextViewText(R.id.tvConfigInput, textFromWidgetConfigTextView);
+
+		Intent in = new Intent(c, Splash.class);
+		PendingIntent pi = PendingIntent.getActivity(c, 0, in, 0);
+		views.setOnClickPendingIntent(R.id.bwidgetOpen, pi);
 		awm.updateAppWidget(awID, views);
+
+		Intent result = new Intent();
+		result.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, awID);
+		setResult(RESULT_OK, result);
 
 		finish();
 

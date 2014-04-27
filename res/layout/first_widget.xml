@@ -15,7 +15,7 @@
         android:id="@+id/bwidgetOpen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Launch Activity" >
+        android:text="Launch Splash Activity" >
     </Button>
 
     <TextView
