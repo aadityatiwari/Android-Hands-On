@@ -184,6 +184,27 @@
             android:name=".WeatherRelatedActivity"
             android:label="@string/app_name" >
         </activity>
+
+        <receiver
+            android:name=".MyFirstAppWidget"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/first_widget_stuff" >
+            </meta-data>
+        </receiver>
+
+        <activity
+            android:name=".MyFirstAppWidgetConfig"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
