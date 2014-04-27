@@ -1,4 +1,4 @@
-MyAndroidTutorialProject
+Android-Hands-On
 ========================
 
-Android Tutorial Project to learn and build Android based applications
+Exploring Android SDK to learn and develop Android applications
