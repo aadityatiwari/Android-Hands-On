@@ -15,7 +15,7 @@ public class MyFirstAppWidget extends AppWidgetProvider {
 			int[] appWidgetIds) {
 		super.onUpdate(context, appWidgetManager, appWidgetIds);
 		Random r = new Random();
-		int randomInt = r.nextInt(100000000);
+		int randomInt = r.nextInt(1000000);
 		String rand = String.valueOf(randomInt);
 
 		final int N = appWidgetIds.length;
@@ -35,4 +35,6 @@ public class MyFirstAppWidget extends AppWidgetProvider {
 		super.onDeleted(context, appWidgetIds);
 		Toast.makeText(context, "Widget deleted", Toast.LENGTH_SHORT).show();
 	}
+	
+	
 }

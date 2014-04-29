@@ -19,7 +19,7 @@ public class Splash extends Activity {
 
 		SharedPreferences getPrefs = PreferenceManager
 				.getDefaultSharedPreferences(getBaseContext());
-		boolean music = getPrefs.getBoolean("musicCheckbox", true);
+		boolean music = getPrefs.getBoolean("musicCheckbox", false);
 		if (music) {
 			testSong.start();
 		}
