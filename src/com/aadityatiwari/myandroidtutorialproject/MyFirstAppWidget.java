@@ -43,12 +43,11 @@ public class MyFirstAppWidget extends AppWidgetProvider {
 				MyFirstAppWidget.class);
 		int[] allWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget);
 		for (int widgetId : allWidgetIds) {
-			// create some random data
-			int number = (new Random().nextInt(100));
+			int number = (new Random().nextInt(10000));
 
 			RemoteViews remoteViews = new RemoteViews(context.getPackageName(),
 					R.layout.first_widget);
-			Log.w("WidgetExample", String.valueOf(number));
+			Log.w("MyFirstAppWidget", String.valueOf(number));
 			// Set the text
 			remoteViews.setTextViewText(R.id.tvwidgetUpdate,
 					String.valueOf(number));
