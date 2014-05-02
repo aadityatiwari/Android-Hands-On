@@ -209,6 +209,10 @@
             android:name=".MyGLExample"
             android:label="@string/app_name" >
         </activity>
+        <activity
+            android:name=".MyGLCubeExample"
+            android:label="@string/app_name" >
+        </activity>
     </application>
 
 </manifest>
