@@ -9,11 +9,18 @@ import javax.microedition.khronos.opengles.GL10;
 
 public class MyGLTriangleEx {
 
-	private float vertices[] = { 0f, 1f, // p0
+	private float vertices[] = {
+			0f, 1f, // p0
 			1.0f, -1.0f, // p1
 			-1.0f, -1.0f // p2
 	};
 	private short[] pIndex = { 0, 1, 2 };
+
+	private float rgbaVals[] = {
+			1, 1, 0, .5f,
+			.25f, 0, .85f, 1,
+			0, 1, 1, 1
+			};
 
 	private FloatBuffer vertBuff, colorBuff;
 	private ShortBuffer pBuff;
@@ -32,14 +39,23 @@ public class MyGLTriangleEx {
 		pBuff.put(pIndex);
 		pBuff.position(0);
 
+		ByteBuffer cBuff = ByteBuffer.allocateDirect(rgbaVals.length * 4);
+		cBuff.order(ByteOrder.nativeOrder());
+		colorBuff = cBuff.asFloatBuffer();
+		colorBuff.put(rgbaVals);
+		colorBuff.position(0);
+
 	}
 
 	public void draw(GL10 gl) {
 		gl.glFrontFace(GL10.GL_CW);
 		gl.glEnableClientState(GL10.GL_VERTEX_ARRAY);
-		gl.glVertexPointer(2, GL10.GL_FLOAT, 0, vertBuff);
+		gl.glEnableClientState(GL10.GL_COLOR_ARRAY);
+		gl.glVertexPointer(2, GL10.GL_FLOAT, 0, vertBuff);	
+		gl.glColorPointer(4, GL10.GL_FLOAT, 0, colorBuff);
 		gl.glDrawElements(GL10.GL_TRIANGLES, pIndex.length,
 				GL10.GL_UNSIGNED_SHORT, pBuff);
+		gl.glDisableClientState(GL10.GL_COLOR_ARRAY);
 		gl.glDisableClientState(GL10.GL_VERTEX_ARRAY);
 
 	}
