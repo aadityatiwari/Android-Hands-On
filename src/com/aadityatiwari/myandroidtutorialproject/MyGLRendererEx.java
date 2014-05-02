@@ -6,6 +6,11 @@ import javax.microedition.khronos.opengles.GL10;
 import android.opengl.GLSurfaceView.Renderer;
 
 public class MyGLRendererEx implements Renderer {
+	private MyGLTriangleEx triangle;
+
+	public MyGLRendererEx() {
+		triangle = new MyGLTriangleEx();
+	}
 
 	@Override
 	public void onSurfaceCreated(GL10 gl, EGLConfig eglConfig) {
@@ -16,7 +21,7 @@ public class MyGLRendererEx implements Renderer {
 	@Override
 	public void onDrawFrame(GL10 gl) {
 		gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
-
+		triangle.draw(gl);
 	}
 
 	@Override

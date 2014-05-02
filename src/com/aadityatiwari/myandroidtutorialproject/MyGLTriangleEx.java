@@ -38,9 +38,10 @@ public class MyGLTriangleEx {
 		gl.glFrontFace(GL10.GL_CW);
 		gl.glEnableClientState(GL10.GL_VERTEX_ARRAY);
 		gl.glVertexPointer(2, GL10.GL_FLOAT, 0, vertBuff);
+		gl.glDrawElements(GL10.GL_TRIANGLES, pIndex.length,
+				GL10.GL_UNSIGNED_SHORT, pBuff);
 		gl.glDisableClientState(GL10.GL_VERTEX_ARRAY);
-		
-		
+
 	}
 
 }
