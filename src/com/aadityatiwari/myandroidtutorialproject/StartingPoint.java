@@ -6,6 +6,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.ads.AdRequest;
+import com.google.ads.AdView;
+
 public class StartingPoint extends Activity {
 
 	int counter;
@@ -23,6 +26,11 @@ public class StartingPoint extends Activity {
 		addButton = (Button) findViewById(R.id.bAdd);
 		subtractButton = (Button) findViewById(R.id.bSubtract);
 		tvTotalCountDisplay = (TextView) findViewById(R.id.tvTotalValueDisplay);
+
+		AdView ad = (AdView) findViewById(R.id.ad);
+		AdRequest adReq = new AdRequest();
+		ad.loadAd(adReq);
+
 		addButton.setOnClickListener(new View.OnClickListener() {
 
 			@Override
