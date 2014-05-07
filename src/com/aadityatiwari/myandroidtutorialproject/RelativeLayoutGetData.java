@@ -7,13 +7,19 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.google.ads.AdRequest;
+import com.google.ads.AdSize;
+import com.google.ads.AdView;
 
 public class RelativeLayoutGetData extends Activity implements OnClickListener {
 
 	EditText etSendData;
 	Button bSA, bSAFR;
 	TextView tvGetText;
+	RelativeLayout rl;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +27,11 @@ public class RelativeLayoutGetData extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.relativelayoutgetdata);
 		initialize();
+		rl = (RelativeLayout) findViewById(R.id.relLayout);
+		// TODO: Replace 3rd Argument below with AdMOb ID
+		AdView ad = new AdView(this, AdSize.BANNER, "ADMOB_ID");
+		rl.addView(ad);
+		ad.loadAd(new AdRequest());
 	}
 
 	private void initialize() {
