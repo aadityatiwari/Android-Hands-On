@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.aadityatiwari.myandroidtutorialproject"
+    package="com.aadityatiwari.learningandroid.firstproject"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -37,7 +37,7 @@
         <uses-library android:name="com.google.android.maps" />
 
         <activity
-            android:name=".StartingPoint"
+            android:name="com.aadityatiwari.learningandroid.firstproject.StartingPoint"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="com.aadityatiwari.myandroidtutorialproject.STARTINGPOINT" />
@@ -48,7 +48,7 @@
 
         <!-- Launcher Activity - BEGINS -->
         <activity
-            android:name=".Splash"
+            android:name="com.aadityatiwari.learningandroid.firstproject.Splash"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -59,7 +59,7 @@
         <!-- Launcher Activity - ENDS -->
 
         <activity
-            android:name=".MyMenu"
+            android:name="com.aadityatiwari.learningandroid.firstproject.MyMenu"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="com.aadityatiwari.myandroidtutorialproject.MYMENU" />
@@ -68,28 +68,28 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".TextPlay"
+            android:name="com.aadityatiwari.learningandroid.firstproject.TextPlay"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".Email"
+            android:name="com.aadityatiwari.learningandroid.firstproject.Email"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".Camera"
+            android:name="com.aadityatiwari.learningandroid.firstproject.Camera"
             android:label="@string/cameraApp"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".RelativeLayoutGetData"
+            android:name="com.aadityatiwari.learningandroid.firstproject.RelativeLayoutGetData"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".LinearLayoutSendData"
+            android:name="com.aadityatiwari.learningandroid.firstproject.LinearLayoutSendData"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".AboutUs"
+            android:name="com.aadityatiwari.learningandroid.firstproject.AboutUs"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Dialog" >
             <intent-filter>
@@ -99,7 +99,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Prefs"
+            android:name="com.aadityatiwari.learningandroid.firstproject.Prefs"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Dialog" >
             <intent-filter>
@@ -109,51 +109,51 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MyGraphics"
+            android:name="com.aadityatiwari.learningandroid.firstproject.MyGraphics"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".MyGraphicsSurface"
+            android:name="com.aadityatiwari.learningandroid.firstproject.MyGraphicsSurface"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".SoundStuff"
+            android:name="com.aadityatiwari.learningandroid.firstproject.SoundStuff"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".Slider"
+            android:name="com.aadityatiwari.learningandroid.firstproject.Slider"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".Tabs"
+            android:name="com.aadityatiwari.learningandroid.firstproject.Tabs"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".SimpleBrowser"
+            android:name="com.aadityatiwari.learningandroid.firstproject.SimpleBrowser"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".Flipper"
+            android:name="com.aadityatiwari.learningandroid.firstproject.Flipper"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".SharedPrefs"
+            android:name="com.aadityatiwari.learningandroid.firstproject.SharedPrefs"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".InternalData"
+            android:name="com.aadityatiwari.learningandroid.firstproject.InternalData"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".ExternalData"
+            android:name="com.aadityatiwari.learningandroid.firstproject.ExternalData"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".SQLiteExample"
+            android:name="com.aadityatiwari.learningandroid.firstproject.SQLiteExample"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".SQLView"
+            android:name="com.aadityatiwari.learningandroid.firstproject.SQLView"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="com.aadityatiwari.myandroidtutorialproject.SQLVIEW" />
@@ -162,27 +162,27 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Accelerate"
+            android:name="com.aadityatiwari.learningandroid.firstproject.Accelerate"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".FirstMapActivity"
+            android:name="com.aadityatiwari.learningandroid.firstproject.FirstMapActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".SecondMapActivity_v1"
+            android:name="com.aadityatiwari.learningandroid.firstproject.SecondMapActivity_v1"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".HttpExample"
+            android:name="com.aadityatiwari.learningandroid.firstproject.HttpExample"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".TwitterRelatedActivity"
+            android:name="com.aadityatiwari.learningandroid.firstproject.TwitterRelatedActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".WeatherRelatedActivity"
+            android:name="com.aadityatiwari.learningandroid.firstproject.WeatherRelatedActivity"
             android:label="@string/app_name" >
         </activity>
 
@@ -200,40 +200,40 @@
         </receiver>
 
         <activity
-            android:name=".MyFirstAppWidgetConfig"
+            android:name="com.aadityatiwari.learningandroid.firstproject.MyFirstAppWidgetConfig"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".MyGLExample"
+            android:name="com.aadityatiwari.learningandroid.firstproject.MyGLExample"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".MyGLCubeExample"
+            android:name="com.aadityatiwari.learningandroid.firstproject.MyGLCubeExample"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".VoiceActivity"
+            android:name="com.aadityatiwari.learningandroid.firstproject.VoiceActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".TextVoiceActivity"
+            android:name="com.aadityatiwari.learningandroid.firstproject.TextVoiceActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".StatusBar"
+            android:name="com.aadityatiwari.learningandroid.firstproject.StatusBar"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".SeekBarVolume"
+            android:name="com.aadityatiwari.learningandroid.firstproject.SeekBarVolume"
             android:label="@string/app_name" >
         </activity>
-        <activity
+        <!--<activity
             android:name="com.google.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" >
-        </activity>
+        </activity>-->
     </application>
 
 </manifest>
